@@ -1,10 +1,10 @@
 {
-  "id": "./GAME.html",
+  "id": "./",
   "name": "Bugbane",
   "short_name": "Bugbane",
   "description": "A pixel-art adventure for learning programming, playable offline.",
   "lang": "en",
-  "start_url": "./GAME.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",

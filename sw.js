@@ -1,8 +1,8 @@
 'use strict';
 
-var CACHE_NAME = 'bugbane-shell-v3';
+var CACHE_NAME = 'bugbane-shell-v4';
 var SHELL_FILES = [
-  './GAME.html',
+  './index.html',
   './manifest.webmanifest',
   './fonts/PixelifySans-Regular.ttf',
   './fonts/PixelifySans-Medium.ttf',
@@ -39,16 +39,16 @@ self.addEventListener('fetch', function (event) {
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
 
   var url = new URL(request.url);
-  if (request.mode === 'navigate' && url.pathname === new URL('./GAME.html', self.registration.scope).pathname) {
+  if (request.mode === 'navigate' && url.pathname === new URL('./index.html', self.registration.scope).pathname) {
     event.respondWith(
       fetch(request).then(function (response) {
         if (response.ok) {
           var copy = response.clone();
-          caches.open(CACHE_NAME).then(function (cache) { return cache.put('./GAME.html', copy); });
+          caches.open(CACHE_NAME).then(function (cache) { return cache.put('./index.html', copy); });
         }
         return response;
       }).catch(function () {
-        return caches.match('./GAME.html').then(function (cached) {
+        return caches.match('./index.html').then(function (cached) {
           if (cached) return cached;
           return new Response('Bugbane is not available offline yet. Connect once to load the game, then try again.', {
             status: 503,
